@@ -16,6 +16,19 @@ cook_book = {
     ]
   }
 
+# Если убрать выше заданный cook_book, то будет грузиться только из файла, иначе дополняться
+
+def load_cook_book():
+  with open( 'cook_book.txt', 'r' ) as f:
+    for line in f:
+      dish = line.strip()
+      cook_book[dish] = []
+      ingridient_number = f.readline().strip()  
+      for i in range(int(ingridient_number)):
+        ingridient_name, quantity, measure = f.readline().strip().split(' | ')
+        cook_book[dish].append({'ingridient_name': ingridient_name, 'quantity': quantity, 'measure': measure})
+        print(cook_book)
+      f.readline()
 
 def get_shop_list_by_dishes(dishes, person_count):
   shop_list = {}
@@ -42,4 +55,8 @@ def create_shop_list():
   shop_list = get_shop_list_by_dishes(dishes, person_count)
   print_shop_list(shop_list)
 
+
+
+load_cook_book()
+  
 create_shop_list()
