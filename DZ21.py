@@ -1,3 +1,4 @@
+cook_book = {}
 cook_book = {
   'яйчница': [
     {'ingridient_name': 'яйца', 'quantity': 2, 'measure': 'шт.'},
@@ -28,7 +29,6 @@ def load_cook_book():
         ingridient_name, quantity, measure = f.readline().strip().split(' | ')
         cook_book[dish].append({'ingridient_name': ingridient_name, 'quantity': int(quantity), 'measure': measure})
       f.readline()
-  print(cook_book.values())
 
 def get_shop_list_by_dishes(dishes, person_count):
   shop_list = {}
