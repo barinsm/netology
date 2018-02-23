@@ -26,9 +26,9 @@ def load_cook_book():
       ingridient_number = f.readline().strip()  
       for i in range(int(ingridient_number)):
         ingridient_name, quantity, measure = f.readline().strip().split(' | ')
-        cook_book[dish].append({'ingridient_name': ingridient_name, 'quantity': quantity, 'measure': measure})
-        print(cook_book)
+        cook_book[dish].append({'ingridient_name': ingridient_name, 'quantity': int(quantity), 'measure': measure})
       f.readline()
+  print(cook_book.values())
 
 def get_shop_list_by_dishes(dishes, person_count):
   shop_list = {}
@@ -51,12 +51,12 @@ def print_shop_list(shop_list):
 def create_shop_list():
   person_count = int(input('Введите количество человек: '))
   dishes = input('Введите блюда в расчете на одного человека (через запятую): ') \
-    .lower().split(', ')
+    .split(', ')
   shop_list = get_shop_list_by_dishes(dishes, person_count)
   print_shop_list(shop_list)
 
 
 
 load_cook_book()
-  
+
 create_shop_list()
